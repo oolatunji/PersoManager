@@ -1,0 +1,10 @@
+C:\Users\OLATUNJI\Documents\projects\PersoManager\PersoManager.Web\PersoManagerLibrary\obj\Debug\PersoManagerLibrary.csprojResolveAssemblyReference.cache
+C:\Users\OLATUNJI\Documents\projects\PersoManager\PersoManager.Web\PersoManagerLibrary\bin\Debug\PersoManagerLibrary.dll.config
+C:\Users\OLATUNJI\Documents\projects\PersoManager\PersoManager.Web\PersoManagerLibrary\bin\Debug\PersoManagerLibrary.dll
+C:\Users\OLATUNJI\Documents\projects\PersoManager\PersoManager.Web\PersoManagerLibrary\bin\Debug\PersoManagerLibrary.pdb
+C:\Users\OLATUNJI\Documents\projects\PersoManager\PersoManager.Web\PersoManagerLibrary\bin\Debug\EntityFramework.dll
+C:\Users\OLATUNJI\Documents\projects\PersoManager\PersoManager.Web\PersoManagerLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\OLATUNJI\Documents\projects\PersoManager\PersoManager.Web\PersoManagerLibrary\bin\Debug\EntityFramework.xml
+C:\Users\OLATUNJI\Documents\projects\PersoManager\PersoManager.Web\PersoManagerLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\OLATUNJI\Documents\projects\PersoManager\PersoManager.Web\PersoManagerLibrary\obj\Debug\PersoManagerLibrary.dll
+C:\Users\OLATUNJI\Documents\projects\PersoManager\PersoManager.Web\PersoManagerLibrary\obj\Debug\PersoManagerLibrary.pdb
