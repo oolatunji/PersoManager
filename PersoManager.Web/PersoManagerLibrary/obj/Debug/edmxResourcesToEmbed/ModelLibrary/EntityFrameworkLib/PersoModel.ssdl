@@ -9,6 +9,41 @@
     <Property Name="Code" Type="nvarchar" MaxLength="50" />
     <Property Name="Address" Type="nvarchar" MaxLength="250" />
   </EntityType>
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CardPan" Type="nvarchar" MaxLength="500" />
+    <Property Name="HashedCardPan" Type="nvarchar" MaxLength="500" />
+    <Property Name="CardProfileID" Type="bigint" />
+    <Property Name="RequestingBranch" Type="bigint" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="CardExpiryDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CardProfile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="CardType" Type="nvarchar" MaxLength="50" />
+    <Property Name="CardBin" Type="nvarchar" MaxLength="50" />
+    <Property Name="CEDuration" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="500" />
+    <Property Name="Othernames" Type="nvarchar" MaxLength="500" />
+    <Property Name="AccountNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerCard" Type="bigint" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="CustomerBranch" Type="bigint" />
+    <Property Name="Downloaded" Type="bit" />
+  </EntityType>
   <EntityType Name="Functions">
     <Key>
       <PropertyRef Name="ID" />
@@ -51,6 +86,54 @@
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="FirstTime" Type="bit" />
   </EntityType>
+  <Association Name="FK_Card_Branch">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="0..1" />
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="RequestingBranch" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Card_CardProfile">
+    <End Role="CardProfile" Type="Self.CardProfile" Multiplicity="0..1" />
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CardProfile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="CardProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Branch">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="CustomerBranch" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Card">
+    <End Role="Card" Type="Self.Card" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Card">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="CustomerCard" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_RoleFunctions_RoleFunctions">
     <End Role="Functions" Type="Self.Functions" Multiplicity="1" />
     <End Role="RoleFunctions" Type="Self.RoleFunctions" Multiplicity="*" />
@@ -101,10 +184,29 @@
   </Association>
   <EntityContainer Name="PersoDBModelStoreContainer">
     <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardProfile" EntityType="Self.CardProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Functions" EntityType="Self.Functions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoleFunctions" EntityType="Self.RoleFunctions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Card_Branch" Association="Self.FK_Card_Branch">
+      <End Role="Branch" EntitySet="Branch" />
+      <End Role="Card" EntitySet="Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Card_CardProfile" Association="Self.FK_Card_CardProfile">
+      <End Role="CardProfile" EntitySet="CardProfile" />
+      <End Role="Card" EntitySet="Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_Branch" Association="Self.FK_Customer_Branch">
+      <End Role="Branch" EntitySet="Branch" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_Card" Association="Self.FK_Customer_Card">
+      <End Role="Card" EntitySet="Card" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
     <AssociationSet Name="FK_RoleFunctions_RoleFunctions" Association="Self.FK_RoleFunctions_RoleFunctions">
       <End Role="Functions" EntitySet="Functions" />
       <End Role="RoleFunctions" EntitySet="RoleFunctions" />

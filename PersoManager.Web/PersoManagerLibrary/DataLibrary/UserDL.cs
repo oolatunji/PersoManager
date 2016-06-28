@@ -140,6 +140,7 @@ namespace PersoManagerLibrary
                 using (var context = new PersoDBEntities())
                 {
                     var users = context.Users
+                                        .Include("Branch")
                                         .Include("Role.RoleFunctions.Function")
                                         .Where(f => f.Username == username && f.HashedPassword == hashedPassword);
 

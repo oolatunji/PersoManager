@@ -16,7 +16,9 @@ namespace PersoManagerLibrary.ModelLibrary.EntityFrameworkLib
     {
         public Branch()
         {
+            this.Cards = new HashSet<Card>();
             this.Users = new HashSet<User>();
+            this.Customers = new HashSet<Customer>();
         }
     
         public long ID { get; set; }
@@ -24,6 +26,8 @@ namespace PersoManagerLibrary.ModelLibrary.EntityFrameworkLib
         public string Code { get; set; }
         public string Address { get; set; }
     
+        public virtual ICollection<Card> Cards { get; set; }
         public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

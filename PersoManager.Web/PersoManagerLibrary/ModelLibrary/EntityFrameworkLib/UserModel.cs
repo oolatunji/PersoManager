@@ -12,6 +12,7 @@ namespace PersoManagerLibrary
         public string Username { get; set; }
         public string Role { get; set; }
         public List<FunctionModel> Function { get; set; }
+        public BranchModel Branch { get; set; }
         public string Response { get; set; }
     }
 }

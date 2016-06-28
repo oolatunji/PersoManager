@@ -26,6 +26,9 @@ namespace PersoManagerLibrary.ModelLibrary.EntityFrameworkLib
         }
     
         public virtual DbSet<Branch> Branches { get; set; }
+        public virtual DbSet<Card> Cards { get; set; }
+        public virtual DbSet<CardProfile> CardProfiles { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Function> Functions { get; set; }
         public virtual DbSet<RoleFunction> RoleFunctions { get; set; }
         public virtual DbSet<Role> Roles { get; set; }

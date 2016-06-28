@@ -212,5 +212,12 @@ namespace PersoManagerLibrary
             return output.ToString();
         }
 
+        public static string ReFormatPan(string pan)
+        {
+            var formattedPan = string.Format("{0} {1} {2} {3}", pan.Substring(0, 4), pan.Substring(4, 4), pan.Substring(8, 4), pan.Substring(12, 4));
+
+            return formattedPan;
+        } 
+
     }
 }

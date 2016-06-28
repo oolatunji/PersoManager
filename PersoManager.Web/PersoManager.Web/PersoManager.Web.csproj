@@ -126,9 +126,7 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\CardProfile\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -164,13 +162,16 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\api\BranchAPIController.cs" />
     <Compile Include="Controllers\api\CardProfileAPIController.cs" />
+    <Compile Include="Controllers\api\CustomerAPIController.cs" />
     <Compile Include="Controllers\api\FunctionAPIController.cs" />
     <Compile Include="Controllers\api\RoleAPIController.cs" />
     <Compile Include="Controllers\api\UserAPIController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\CardProfileController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\FunctionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PersoController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\PasswordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -192,6 +194,7 @@
     <Content Include="Content\buttons.dataTables.min.css" />
     <Content Include="Content\clndr.css" />
     <Content Include="Content\dataTables.bootstrap.min.css" />
+    <Content Include="Content\dataTables.checkboxes.css" />
     <Content Include="Content\dataTables.tableTools.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -290,20 +293,24 @@
     <Content Include="Scripts\Branch\UpdateBranch.js" />
     <Content Include="Scripts\Branch\ViewBranch.js" />
     <Content Include="Scripts\buttons.html5.min.js" />
-    <Content Include="Scripts\Card\UploadPregeneratedCard.js" />
+    <Content Include="Scripts\CardProfile\AddCardProfile.js" />
+    <Content Include="Scripts\CardProfile\UpdateCardProfile.js" />
+    <Content Include="Scripts\CardProfile\ViewCardProfile.js" />
     <Content Include="Scripts\Card\ViewPregeneratedCard.js" />
     <Content Include="Scripts\clndr.js" />
     <Content Include="Scripts\clndr.min.js" />
     <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\Customer\RegisterCustomer.js" />
+    <Content Include="Scripts\Customer\UpdateCustomer.js" />
     <Content Include="Scripts\d3.js" />
     <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\dashboard-demo.js" />
     <Content Include="Scripts\dataTables.buttons.min.js" />
+    <Content Include="Scripts\dataTables.checkboxes.js" />
     <Content Include="Scripts\dataTables.tableTools.js" />
     <Content Include="Scripts\DynamicMenu\Dashboard.js" />
     <Content Include="Scripts\DynamicMenu\Layout.js" />
-    <Content Include="Scripts\Enrolment\ViewEnrolments.js" />
-    <Content Include="Scripts\Fine\ViewFines.js" />
+    <Content Include="Scripts\Customer\ViewCustomer.js" />
     <Content Include="Scripts\Function\AddFunction.js" />
     <Content Include="Scripts\Function\UpdateFunction.js" />
     <Content Include="Scripts\Function\ViewFunction.js" />
@@ -325,7 +332,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\nav.js" />
-    <Content Include="Scripts\Order\RequestOrder.js" />
     <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\pace.min.js" />
@@ -334,6 +340,8 @@
     <Content Include="Scripts\Password\ForgotPassword.js" />
     <Content Include="Scripts\Password\PasswordReset.js" />
     <Content Include="Scripts\pdfmake.min.js" />
+    <Content Include="Scripts\Perso\DownloadPersoFile.js" />
+    <Content Include="Scripts\Perso\ResetDownload.js" />
     <Content Include="Scripts\placeholders.min.js" />
     <Content Include="Scripts\prettify.js" />
     <Content Include="Scripts\respond.js" />
@@ -352,8 +360,6 @@
     <Content Include="Scripts\Utility\messageBox.js" />
     <Content Include="Scripts\Utility\SystemConfiguration.js" />
     <Content Include="Scripts\vfs_fonts.js" />
-    <Content Include="Scripts\Violation\AddViolation.js" />
-    <Content Include="Scripts\Violation\ViewViolations.js" />
     <Content Include="Scripts\xcharts.js" />
     <Content Include="Scripts\xcharts.min.js" />
     <Content Include="Web.config" />
@@ -394,6 +400,15 @@
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\User\ForgotPassword.cshtml" />
     <Content Include="Views\User\ResetPassword.cshtml" />
+    <Content Include="Views\CardProfile\AddCardProfile.cshtml" />
+    <Content Include="Views\CardProfile\ViewCardProfile.cshtml" />
+    <Content Include="Views\CardProfile\UpdateCardProfile.cshtml" />
+    <Content Include="Views\Customer\RegisterCustomer.cshtml" />
+    <Content Include="Views\Customer\ViewCustomer.cshtml" />
+    <Content Include="Views\Customer\UpdateCustomer.cshtml" />
+    <Content Include="Views\Perso\DownloadPersoFile.cshtml" />
+    <Content Include="Views\Perso\ResetDownload.cshtml" />
+    <None Include="Properties\PublishProfiles\PersoApplicationDeploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PersoManagerLibrary\PersoManagerLibrary.csproj">

@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    @Styles.Render("~/Content/logincss")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/common_libraries")
+</head>
+<body>
+    <section class="container">
+        <div class="login">
+            <h1>Perso Application</h1>
+            <form id="demo-form" data-parsley-validate="">
+                <p>
+                    <input type="text" placeholder="Enter username" autofocus="" id="username" required="" data-parsley-required-message="Please enter your username" />
+                </p>
+                <p>
+                    <input type="password" placeholder="Enter password" id="password" required="" data-parsley-required-message="Please enter your password">
+                </p>
+                <p>
+                </p>
+                <p class="submit">
+                    <input type="button" id="addBtn" onclick="LoginIn()" value="Login" />
+                </p>
+                <p>
+                    <hr>
+                </p>
+                 <a href="~/User/ForgotPassword" style="color:green">Forgot your password?</a>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
+

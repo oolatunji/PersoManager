@@ -8,14 +8,11 @@ namespace PersoManagerLibrary
 {
     public class StatusUtil
     {
-        public enum OrderStatus
+        public enum CardType
         {
-            Requested,
-            Approved,
-            Delivered,
-            Acknowledged,
-            Cancelled,
-            Declined
+            VerveCard,
+            MasterCard,
+            VISA,
         }
 
         public enum Status

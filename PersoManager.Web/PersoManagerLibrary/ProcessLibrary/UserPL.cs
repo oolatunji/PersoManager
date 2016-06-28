@@ -153,6 +153,7 @@ namespace PersoManagerLibrary
                     userObj.Username = user.Username;
                     userObj.Role = user.Role.Name;
                     userObj.Function = userFunctions;
+                    userObj.Branch = new BranchModel { ID = user.Branch.ID, Code = user.Branch.Code, Name = user.Branch.Name };
                 }
                 return userObj;
             }

@@ -5,15 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="732a3652bb334b92b709c7c14400ff3e" Name="Diagram1">
-        <EntityTypeShape EntityType="PersoDBModel.Branch" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PersoDBModel.Function" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PersoDBModel.RoleFunction" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PersoDBModel.Role" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PersoDBModel.User" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
-        <AssociationConnector Association="PersoDBModel.FK_Users_Branch" ManuallyRouted="false" />
-        <AssociationConnector Association="PersoDBModel.FK_RoleFunctions_RoleFunctions" ManuallyRouted="false" />
-        <AssociationConnector Association="PersoDBModel.FK_RoleFunctions_Roles" ManuallyRouted="false" />
-        <AssociationConnector Association="PersoDBModel.FK_Users_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PersoDBModel.Branch" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PersoDBModel.Card" Width="1.5" PointX="6" PointY="4.5" />
+        <EntityTypeShape EntityType="PersoDBModel.CardProfile" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PersoDBModel.Customer" Width="1.5" PointX="8.25" PointY="4.625" />
+        <EntityTypeShape EntityType="PersoDBModel.Function" Width="1.5" PointX="3.75" PointY="8.625" />
+        <EntityTypeShape EntityType="PersoDBModel.RoleFunction" Width="1.5" PointX="6" PointY="0.875" />
+        <EntityTypeShape EntityType="PersoDBModel.Role" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="PersoDBModel.User" Width="1.5" PointX="3" PointY="4" />
+        <AssociationConnector Association="PersoDBModel.FK_Card_Branch" />
+        <AssociationConnector Association="PersoDBModel.FK_Users_Branch" />
+        <AssociationConnector Association="PersoDBModel.FK_Card_CardProfile" />
+        <AssociationConnector Association="PersoDBModel.FK_Customer_Card" />
+        <AssociationConnector Association="PersoDBModel.FK_RoleFunctions_RoleFunctions" />
+        <AssociationConnector Association="PersoDBModel.FK_RoleFunctions_Roles" />
+        <AssociationConnector Association="PersoDBModel.FK_Users_Roles" />
+        <AssociationConnector Association="PersoDBModel.FK_Customer_Branch" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

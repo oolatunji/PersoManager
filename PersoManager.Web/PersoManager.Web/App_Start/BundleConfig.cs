@@ -23,6 +23,7 @@ namespace PersoManager.Web
                       "~/Scripts/jquery.slimscroll.min.js",
                       "~/Scripts/jquery.dataTables.min.js",
                       "~/Scripts/dataTables.buttons.min.js",
+                      "~/Scripts/dataTables.checkboxes.min.js",
                       "~/Scripts/jszip.min.js",
                       "~/Scripts/pdfmake.min.js",
                       "~/Scripts/vfs_fonts.js",
@@ -115,6 +116,46 @@ namespace PersoManager.Web
                       "~/Scripts/User/UpdateUser.js"
                       ));
 
+            bundles.Add(new ScriptBundle("~/bundles/addcardprofile").Include(
+                                "~/Scripts/CardProfile/AddCardProfile.js"
+                                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/updatecardprofile").Include(
+                      "~/Scripts/CardProfile/UpdateCardProfile.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/viewcardprofile").Include(
+                      "~/Scripts/CardProfile/ViewCardProfile.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/generatecard").Include(
+                      "~/Scripts/Card/GenerateCard.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/viewcard").Include(
+                      "~/Scripts/Card/ViewCard.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/registercustomer").Include(
+                                "~/Scripts/Customer/RegisterCustomer.js"
+                                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/updatecustomer").Include(
+                      "~/Scripts/Customer/UpdateCustomer.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/viewcustomer").Include(
+                      "~/Scripts/Customer/ViewCustomer.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/downloadpersofile").Include(
+                      "~/Scripts/Perso/DownloadPersoFile.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/resetdownload").Include(
+                      "~/Scripts/Perso/ResetDownload.js"
+                      ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/font-awesome.min.css",
@@ -130,6 +171,7 @@ namespace PersoManager.Web
                       "~/Content/style.css",
                       "~/Content/form-wizard.css",
                       "~/Content/parsley.css",
+                      "~/Content/dataTables.checkboxes.css",
                       "~/Content/Wobblebar.css"));
 
             bundles.Add(new StyleBundle("~/Content/logincss").Include(
