@@ -6,7 +6,8 @@
             var username = $('#username').val();
             var password = $('#password').val();
 
-            $('#addBtn').val('processing...');
+            $('#addBtn').html('<i class="fa fa-spinner fa-spin"></i>');
+            $("#addBtn").attr("disabled", "disabled");
 
             var data = { Username: username, Password: password };
             $.ajax({
@@ -35,7 +36,8 @@
                     else
                         displayMessage("error", 'Error experienced: ' + xhr.responseText, "User Login");
                     console.log(xhr);
-                    $('#addBtn').val('Login');
+                    $("#addBtn").removeAttr("disabled");
+                    $('#addBtn').html('Login');
                 }
             });
         } else {
@@ -44,6 +46,7 @@
     } catch (err) {
         displayMessage("error", "Error encountered: " + err, "User Login");
         console.log(err);
-        $('#addBtn').val('Login');
+        $("#addBtn").removeAttr("disabled");
+        $('#addBtn').html('Login');
     }
 }

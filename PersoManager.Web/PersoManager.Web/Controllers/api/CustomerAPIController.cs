@@ -25,6 +25,7 @@ namespace PersoManager.Web.Controllers.api
                 customer.AccountNumber = customermodel.AccountNumber;
                 customer.Date = System.DateTime.Now;
                 customer.CustomerBranch = customermodel.CustomerBranch;
+                customer.Downloaded = false;
                 customer.Card = new CardProductionPL().ProduceCard(customermodel.CardProfileID, Convert.ToInt64(customer.CustomerBranch));
 
                 bool result = CustomerPL.Save(customer, out errMsg);
@@ -101,7 +102,7 @@ namespace PersoManager.Web.Controllers.api
         {
             try
             {
-                bool customerData = CustomerPL.DownloadCustomerPersoFile(customer.CustomerIDs);
+                CustomerPL.ProcessCustomerPersoFile(customer.CustomerIDs);
 
                 var persofilepath = @System.Configuration.ConfigurationManager.AppSettings.Get("PersoFilePath");
 
