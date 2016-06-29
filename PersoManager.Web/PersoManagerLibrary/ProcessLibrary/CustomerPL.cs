@@ -163,7 +163,7 @@ namespace PersoManagerLibrary
                 customerData.Append("Wisecard Technology");
                 customerData.Append("      ");
                 customerData.Append("#");
-                customerData.Append(string.Format("478[%B{0}^{1}^1805201163540000000000478000000? ;{2}=18052011635447800000?]~389@@", _pan, customerName.PadRight(26, ' '), _pan));
+                customerData.Append(string.Format("478[%B{0}^{1}^{2}201163540000000000478000000? ;{3}={4}2011635447800000?]~389@@", _pan, customerName.PadRight(26, ' '), String.Format("{0:yyMM}", Convert.ToDateTime(customer.Card.CardExpiryDate)), _pan, String.Format("{0:yyMM}", Convert.ToDateTime(customer.Card.CardExpiryDate))));
                 customerData.Append("#");
                 customerData.Append("100002 7700690073006500630061007200");
                 customerData.Append("#");
