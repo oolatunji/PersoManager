@@ -76,5 +76,35 @@ namespace PersoManagerLibrary
                 throw ex;
             }
         }
+
+        public static List<CardProfileModel> GetCardProfiles()
+        {
+            try
+            {
+                var returnedCardProfiles = new List<CardProfileModel>();
+
+                var cardProfiles = CardProfileDL.RetrieveCardProfiles();
+
+                foreach (CardProfile cardProfile in cardProfiles)
+                {
+                    var cardProfileObj = new CardProfileModel
+                    {
+                        ID = cardProfile.ID,
+                        Name = cardProfile.Name,
+                        CardType = cardProfile.CardType,
+                        CardBin = cardProfile.CardBin,
+                        CEDuration = Convert.ToInt64(cardProfile.CEDuration),
+                    };
+
+                    returnedCardProfiles.Add(cardProfileObj);
+                }
+
+                return returnedCardProfiles;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

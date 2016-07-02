@@ -162,5 +162,40 @@ namespace PersoManagerLibrary
                 throw ex;
             }
         }
+
+        public static UserModel RetrieveUser()
+        {
+            try
+            {
+                var userObj = new UserModel();
+                var user = UserDL.RetrieveUser();
+                if (user != null)
+                {
+                    var userFunctions = new List<FunctionModel>();
+
+                    foreach (RoleFunction roleFunction in user.Role.RoleFunctions)
+                    {
+                        var function = new FunctionModel
+                        {
+                            Name = roleFunction.Function.Name,
+                            PageLink = roleFunction.Function.PageLink
+                        };
+
+                        userFunctions.Add(function);
+                    }
+
+                    userObj.ID = user.ID;
+                    userObj.Username = user.Username;
+                    userObj.Role = user.Role.Name;
+                    userObj.Function = userFunctions;
+                    userObj.Branch = new BranchModel { ID = user.Branch.ID, Code = user.Branch.Code, Name = user.Branch.Name };
+                }
+                return userObj;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="PersoDBEntities-Web.config Connection String" description="PersoDBEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/ModelLibrary.EntityFrameworkLib.PersoModel.csdl|res://*/ModelLibrary.EntityFrameworkLib.PersoModel.ssdl|res://*/ModelLibrary.EntityFrameworkLib.PersoModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.\sqlexpress;initial catalog=PersoDB;user id=sa;password=root;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+  <parameter name="PersoDBEntities-Web.config Connection String" description="PersoDBEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/ModelLibrary.EntityFrameworkLib.PersoModel.csdl|res://*/ModelLibrary.EntityFrameworkLib.PersoModel.ssdl|res://*/ModelLibrary.EntityFrameworkLib.PersoModel.msl;provider=System.Data.SqlClient;provider connection string='data source=.\sqlexpress;initial catalog=PersoDB;user id=sa;password=root;MultipleActiveResultSets=True;App=EntityFramework'" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\OLATUNJI\\Documents\\projects\\PersoManager\\PersoManager\.Web\\PersoManager\.Web\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='PersoDBEntities']/@connectionString" />
   </parameter>
 </parameters>

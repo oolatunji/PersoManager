@@ -57,6 +57,8 @@
     <Compile Include="DataLibrary\FunctionDL.cs" />
     <Compile Include="DataLibrary\RoleDL.cs" />
     <Compile Include="DataLibrary\UserDL.cs" />
+    <Compile Include="ModelLibrary\EntityFrameworkLib\CardModel.cs" />
+    <Compile Include="ModelLibrary\EntityFrameworkLib\CardProfileModel.cs" />
     <Compile Include="ModelLibrary\EntityFrameworkLib\Branch.cs">
       <DependentUpon>PersoModel.tt</DependentUpon>
     </Compile>
@@ -67,6 +69,7 @@
     <Compile Include="ModelLibrary\EntityFrameworkLib\CardProfile.cs">
       <DependentUpon>PersoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelLibrary\EntityFrameworkLib\ClientCustomerModel.cs" />
     <Compile Include="ModelLibrary\EntityFrameworkLib\Customer.cs">
       <DependentUpon>PersoModel.tt</DependentUpon>
     </Compile>

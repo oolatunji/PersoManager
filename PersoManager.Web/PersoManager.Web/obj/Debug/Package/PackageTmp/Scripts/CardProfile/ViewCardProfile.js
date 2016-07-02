@@ -36,7 +36,7 @@ String.prototype.trimRight = function (charlist) {
 function getCardProfiles() {
 
     $('#example tfoot th').each(function () {
-        var title = $('#example thead th').eq($(this).index()).text();
+        var title = $('#example tfoot th').eq($(this).index()).text();
         if (title != "")
             $(this).html('<input type="text" placeholder="Search ' + title + '" />');
     });

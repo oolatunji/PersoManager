@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetUser">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserResult" type="tns:UserModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Role" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Function" type="tns:ArrayOfFunctionModel" />
+          <s:element minOccurs="0" maxOccurs="1" name="Branch" type="tns:BranchModel" />
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFunctionModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FunctionModel" nillable="true" type="tns:FunctionModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FunctionModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PageLink" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BranchModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardProfiles">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCardProfilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardProfilesResult" type="tns:ArrayOfCardProfileModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCardProfileModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CardProfileModel" nillable="true" type="tns:CardProfileModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CardProfileModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardBin" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CEDuration" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="customermodel" type="tns:ClientCustomerModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ClientCustomerModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Othernames" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CardProfileID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerBranch" nillable="true" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Downloaded" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterCustomerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="GetUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardProfilesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardProfiles" />
+  </wsdl:message>
+  <wsdl:message name="GetCardProfilesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardProfilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterCustomer" />
+  </wsdl:message>
+  <wsdl:message name="RegisterCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterCustomerResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ClientAPISoap">
+    <wsdl:operation name="GetUser">
+      <wsdl:input message="tns:GetUserSoapIn" />
+      <wsdl:output message="tns:GetUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardProfiles">
+      <wsdl:input message="tns:GetCardProfilesSoapIn" />
+      <wsdl:output message="tns:GetCardProfilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCustomer">
+      <wsdl:input message="tns:RegisterCustomerSoapIn" />
+      <wsdl:output message="tns:RegisterCustomerSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClientAPISoap" type="tns:ClientAPISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardProfiles">
+      <soap:operation soapAction="http://tempuri.org/GetCardProfiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCustomer">
+      <soap:operation soapAction="http://tempuri.org/RegisterCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ClientAPISoap12" type="tns:ClientAPISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUser">
+      <soap12:operation soapAction="http://tempuri.org/GetUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardProfiles">
+      <soap12:operation soapAction="http://tempuri.org/GetCardProfiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCustomer">
+      <soap12:operation soapAction="http://tempuri.org/RegisterCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientAPI">
+    <wsdl:port name="ClientAPISoap" binding="tns:ClientAPISoap">
+      <soap:address location="http://localhost/PersoApplication/ClientAPI.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ClientAPISoap12" binding="tns:ClientAPISoap12">
+      <soap12:address location="http://localhost/PersoApplication/ClientAPI.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

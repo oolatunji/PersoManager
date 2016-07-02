@@ -1,1 +1,1 @@
-var settingsManager = { "websiteURL": "http://localhost/PersoApplication/" };
+var settingsManager = {"websiteURL": "http://localhost/PersoApplication/"};

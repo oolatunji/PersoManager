@@ -1,0 +1,10 @@
+C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\bin\Debug\StandAlonePersoApp.exe.config
+C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\obj\x86\Debug\StandAlonePersoApp.CustomerRegistration.resources
+C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\obj\x86\Debug\StandAlonePersoApp.Landing.resources
+C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\obj\x86\Debug\StandAlonePersoApp.Properties.Resources.resources
+C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\obj\x86\Debug\StandAlonePersoApp.Settings.resources
+C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\obj\x86\Debug\StandAlonePersoApp.csproj.GenerateResource.Cache
+C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\bin\Debug\StandAlonePersoApp.exe
+C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\bin\Debug\StandAlonePersoApp.pdb
+C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\obj\x86\Debug\StandAlonePersoApp.exe
+C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\obj\x86\Debug\StandAlonePersoApp.pdb

@@ -140,7 +140,7 @@ namespace PersoManagerLibrary
             CustomerDL.UpdateStatus(id, true);
         }
 
-        private static string FormatCustomerPersoDataForDownload(List<Customer> customers)
+        public static string FormatCustomerPersoDataForDownload(List<Customer> customers)
         {
             var customerData = new StringBuilder();
 
@@ -149,12 +149,13 @@ namespace PersoManagerLibrary
                 var _pan = Crypter.Decrypt(System.Configuration.ConfigurationManager.AppSettings.Get("ekey"), customer.Card.CardPan);
 
                 var customerName = FormatCustomerName(customer.Surname, customer.Othernames).ToUpper();
+                var today = System.DateTime.Now;
 
                 customerData.Append("000001");
                 customerData.Append("#");
                 customerData.Append(PasswordHash.ReFormatPan(_pan));
                 customerData.Append("#");
-                customerData.Append("05/15");
+                customerData.Append(String.Format("{0:MM/yy}", today));
                 customerData.Append("#");
                 customerData.Append(String.Format("{0:MM/yy}", Convert.ToDateTime(customer.Card.CardExpiryDate)));
                 customerData.Append("#");
@@ -167,7 +168,7 @@ namespace PersoManagerLibrary
                 customerData.Append("#");
                 customerData.Append("100002 7700690073006500630061007200");
                 customerData.Append("#");
-                customerData.Append("05/15 12345 EMV Golden                  ");
+                customerData.Append(string.Format("{0} 12345 EMV Golden                  ", String.Format("{0:MM/yy}", today)));
                 customerData.Append("#");
                 customerData.Append("support@wisecardtech.com           ");
                 customerData.Append("#");
@@ -213,7 +214,7 @@ namespace PersoManagerLibrary
         {
             var formattedCustomerName = string.Empty;
 
-            var customername = string.Format("{0} {1}", othernames, lastname);
+            var customername = string.Format("{0} {1}", lastname, othernames);
 
             if(customername.Length > 25)
             {
@@ -223,11 +224,11 @@ namespace PersoManagerLibrary
                     var firstName = names[0].Trim();
                     var middleName = names[1].Trim();
 
-                    customername = string.Format("{0} {1} {2}", firstName.Substring(0, 1), middleName.Substring(0, 1), lastname);
+                    customername = string.Format("{0} {1} {2}", lastname, firstName.Substring(0, 1), middleName.Substring(0, 1));
                 }
                 else
                 {
-                    customername = string.Format("{0} {1}", othernames.Substring(0, 1), lastname);
+                    customername = string.Format("{0} {1}", lastname, othernames.Substring(0, 1));
                 }
             }
 

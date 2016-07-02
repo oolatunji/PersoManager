@@ -23,5 +23,15 @@ namespace PersoManager.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Configuration()
+        {
+            return View();
+        }
+
+        public ActionResult SystemConfiguration()
+        {
+            return View();
+        }
     }
 }

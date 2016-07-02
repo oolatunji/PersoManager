@@ -76,6 +76,27 @@ namespace PersoManagerLibrary
             }
         }
 
+        public static User RetrieveUser()
+        {
+            try
+            {
+                using (var context = new PersoDBEntities())
+                {
+                    var existingUser = context.Users
+                                    .Include("Branch")
+                                    .Include("Role.RoleFunctions.Function")
+                                    .OrderByDescending(u => u.ID)
+                                    .Take(1);
+
+                    return existingUser.Any() ? existingUser.FirstOrDefault() : null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static bool ChangePassword(string username, string newHashedPassword)
         {
             try
