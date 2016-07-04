@@ -28,7 +28,9 @@ namespace StandAlonePersoApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Landing));
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
+            this.lbluser = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.menuRegisterCustomer = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuSeparatorItem1 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
@@ -39,7 +41,6 @@ namespace StandAlonePersoApp
             this.menuExit = new Telerik.WinControls.UI.RadMenuItem();
             this.panelDashboard = new Telerik.WinControls.UI.RadPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lbluser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             this.radMenu1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelDashboard)).BeginInit();
@@ -68,6 +69,18 @@ namespace StandAlonePersoApp
             this.radMenu1.Text = "radMenu1";
             this.radMenu1.ThemeName = "Telerik";
             // 
+            // lbluser
+            // 
+            this.lbluser.AutoSize = true;
+            this.lbluser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbluser.ForeColor = System.Drawing.Color.Blue;
+            this.lbluser.Location = new System.Drawing.Point(416, 0);
+            this.lbluser.Name = "lbluser";
+            this.lbluser.Size = new System.Drawing.Size(111, 13);
+            this.lbluser.TabIndex = 0;
+            this.lbluser.Text = "pmbano@pajuno.com";
+            this.lbluser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -86,7 +99,7 @@ namespace StandAlonePersoApp
             this.menuRegisterCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.menuRegisterCustomer.Name = "menuRegisterCustomer";
             this.menuRegisterCustomer.ShowArrow = false;
-            this.menuRegisterCustomer.Text = "Register Customer";
+            this.menuRegisterCustomer.Text = "Request Card";
             this.menuRegisterCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.menuRegisterCustomer.TextSeparatorVisibility = Telerik.WinControls.ElementVisibility.Visible;
             this.menuRegisterCustomer.Click += new System.EventHandler(this.menuRegisterCustomer_Click);
@@ -159,18 +172,6 @@ namespace StandAlonePersoApp
             this.splitContainer1.SplitterDistance = 521;
             this.splitContainer1.TabIndex = 4;
             // 
-            // lbluser
-            // 
-            this.lbluser.AutoSize = true;
-            this.lbluser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbluser.ForeColor = System.Drawing.Color.Blue;
-            this.lbluser.Location = new System.Drawing.Point(416, 0);
-            this.lbluser.Name = "lbluser";
-            this.lbluser.Size = new System.Drawing.Size(111, 13);
-            this.lbluser.TabIndex = 0;
-            this.lbluser.Text = "pmbano@pajuno.com";
-            this.lbluser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // Landing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,6 +180,7 @@ namespace StandAlonePersoApp
             this.Controls.Add(this.radMenu1);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Landing";
             // 
@@ -186,7 +188,7 @@ namespace StandAlonePersoApp
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VISA Instant Issuance";
+            this.Text = "EMV Instant Card Issuance";
             this.ThemeName = "Aqua";
             this.Load += new System.EventHandler(this.Landing_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();

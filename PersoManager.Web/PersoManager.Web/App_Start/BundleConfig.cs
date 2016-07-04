@@ -153,6 +153,10 @@ namespace PersoManager.Web
                       "~/Scripts/Customer/ViewCustomer.js"
                       ));
 
+            bundles.Add(new ScriptBundle("~/bundles/issuecustomercard").Include(
+                      "~/Scripts/Customer/IssueCustomerCard.js"
+                      ));
+
             bundles.Add(new ScriptBundle("~/bundles/downloadpersofile").Include(
                       "~/Scripts/Perso/DownloadPersoFile.js"
                       ));

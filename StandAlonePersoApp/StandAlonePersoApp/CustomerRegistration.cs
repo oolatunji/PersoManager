@@ -29,7 +29,7 @@ namespace StandAlonePersoApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "VISA Instant Issuance", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "EMV Instant Card Issuance", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorHandler.WriteError(ex);
             }
         }
@@ -38,14 +38,12 @@ namespace StandAlonePersoApp
         {
             try
             {
-                if (string.IsNullOrEmpty(txtlname.Text) || string.IsNullOrEmpty(txtfname.Text))
+                if (string.IsNullOrEmpty(txtAccountNumber.Text))
                 {
-                    MessageBox.Show("Kindly enter customer lastname and othernames.", "VISA Instant Issuance", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Kindly enter account number.", "EMV Instant Card Issuance", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    var lastname = txtlname.Text;
-                    var othernames = txtfname.Text;
                     var accountnumber = txtAccountNumber.Text;
                     var userid = Properties.Settings.Default.UserID;
                     var userbranch = Properties.Settings.Default.UserBranch;
@@ -54,8 +52,6 @@ namespace StandAlonePersoApp
                     var client = new ClientAPI.ClientAPI();
                     
                     var customerModel = new ClientAPI.ClientCustomerModel();
-                    customerModel.Surname = lastname;
-                    customerModel.Othernames = othernames;
                     customerModel.AccountNumber = accountnumber;
                     customerModel.CustomerBranch = userbranch;
                     customerModel.CardProfileID = cardprofileid;
@@ -65,21 +61,19 @@ namespace StandAlonePersoApp
                     if (!string.IsNullOrEmpty(persoData))
                     {
                         FileWriter.Write(persoData);
-                        MessageBox.Show("Customer registration was successful.", "VISA Instant Issuance", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Customer registration was successful.", "EMV Instant Card Issuance", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtAccountNumber.Text = "";
-                        txtfname.Text = "";
-                        txtlname.Text = "";
                     }
                     else
                     {
-                        MessageBox.Show("Customer registration failed.", "VISA Instant Issuance", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Customer registration failed.", "EMV Instant Card Issuance", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "VISA Instant Issuance", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "EMV Instant Card Issuance", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorHandler.WriteError(ex);
             }
         }

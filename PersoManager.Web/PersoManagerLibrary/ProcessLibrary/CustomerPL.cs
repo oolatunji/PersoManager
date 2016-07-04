@@ -22,7 +22,7 @@ namespace PersoManagerLibrary
             {
                 if (CustomerDL.CustomerExists(customer))
                 {
-                    message = string.Format("Customer with account number: {0} exists already", customer.AccountNumber);
+                    message = string.Format("Customer: {0} exists already", string.Format("{0} {1}", customer.Surname, customer.Othernames));
                     return false;
                 }
                 else
@@ -30,6 +30,18 @@ namespace PersoManagerLibrary
                     message = string.Empty;
                     return CustomerDL.Save(customer);
                 }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static bool IssueCustomerCard(Customer customer, out string message)
+        {
+            try
+            {
+                return CustomerDL.IssueCustomerCard(customer, out message);
             }
             catch (Exception ex)
             {
@@ -65,8 +77,6 @@ namespace PersoManagerLibrary
                         Surname = customer.Surname,
                         Othernames = customer.Othernames,
                         AccountNumber = customer.AccountNumber,
-                        CardPan = Crypter.Decrypt(System.Configuration.ConfigurationManager.AppSettings.Get("ekey"), customer.Card.CardPan),
-                        CardType = customer.Card.CardProfile.CardType
                     };
 
                     returnedCustomers.Add(customerObj);
@@ -86,7 +96,7 @@ namespace PersoManagerLibrary
             {
                 List<Object> returnedCustomers = new List<object>();
 
-                List<Customer> customers = CustomerDL.RetrieveCustomers();
+                List<Customer> customers = CustomerDL.RetrieveCustomerPersoData();
 
                 foreach (Customer customer in customers)
                 {
@@ -95,6 +105,7 @@ namespace PersoManagerLibrary
                         ID = customer.ID,
                         Surname = customer.Surname,
                         Othernames = customer.Othernames,
+                        AccountNumber = customer.AccountNumber,
                         CardPan = Crypter.Decrypt(System.Configuration.ConfigurationManager.AppSettings.Get("ekey"), customer.Card.CardPan),
                         CardExpiryDate = String.Format("{0:MM/yy}", Convert.ToDateTime(customer.Card.CardExpiryDate)),
                         Downloaded = customer.Downloaded

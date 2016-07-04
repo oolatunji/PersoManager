@@ -24,6 +24,11 @@ namespace PersoManager.Web.Controllers
             return View();
         }
 
+        public ActionResult IssueCustomerCard()
+        {
+            return View();
+        }
+
         public ActionResult ViewCustomerCard()
         {
             return View();

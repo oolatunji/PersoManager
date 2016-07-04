@@ -51,8 +51,6 @@ function getCustomers() {
             { "data": "Surname" },
             { "data": "Othernames" },
             { "data": "AccountNumber" },
-            { "data": "CardPan" },
-            { "data": "CardType" },
             {
                 "className": 'edit-control',
                 "orderable": false,

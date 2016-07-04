@@ -40,7 +40,7 @@ namespace PersoManagerLibrary
                 using (var context = new PersoDBEntities())
                 {
                     existingCustomer = context.Customers
-                                    .Where(t => t.AccountNumber.Equals(customer.AccountNumber))
+                                    .Where(t => t.Surname.Equals(customer.Surname) && t.Othernames.Equals(customer.Othernames))
                                     .FirstOrDefault();
                 }
 
@@ -62,8 +62,6 @@ namespace PersoManagerLibrary
                 using (var context = new PersoDBEntities())
                 {
                     var customers = context.Customers
-                                            .Include("Card")
-                                            .Include("Card.CardProfile")
                                             .ToList();
 
                     return customers;
@@ -88,6 +86,24 @@ namespace PersoManagerLibrary
                                             .ToList();
 
                     return customers;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static Customer RetrieveCustomer(string accountnumber)
+        {
+            try
+            {
+                using (var context = new PersoDBEntities())
+                {
+                    var customers = context.Customers
+                                            .Where(c => c.AccountNumber == accountnumber);
+
+                    return customers.Any() ? customers.FirstOrDefault() : null;
                 }
             }
             catch (Exception ex)
@@ -168,6 +184,99 @@ namespace PersoManagerLibrary
                     return false;
                 }
                 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static bool IssueCustomerCard(Customer customer, out string errMsg)
+        {
+            try
+            {
+                var existingCustomer = new Customer();
+                using (var context = new PersoDBEntities())
+                {
+                    existingCustomer = context.Customers
+                                    .Where(t => t.AccountNumber == customer.AccountNumber)
+                                    .FirstOrDefault();
+
+
+                    if (existingCustomer != null && existingCustomer.ID != 0)
+                    {
+                        if (existingCustomer.Card == null)
+                        {
+                            using (var transaction = context.Database.BeginTransaction())
+                            {
+                                try
+                                {
+                                    long cardid = 0;
+
+                                    if (CardDL.Save(context, customer.Card, out cardid))
+                                    {
+                                        existingCustomer.CustomerBranch = customer.CustomerBranch;
+                                        existingCustomer.Downloaded = customer.Downloaded;
+                                        existingCustomer.CustomerCard = cardid;
+
+
+                                        context.Entry(existingCustomer).State = EntityState.Modified;
+                                        context.SaveChanges();
+
+                                        transaction.Commit();
+
+                                        errMsg = string.Empty;
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        errMsg = "Request Failed";
+                                        transaction.Rollback();
+                                        return false;
+                                    }
+                                }
+                                catch(Exception e)
+                                {
+                                    transaction.Rollback();
+                                    throw e;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            errMsg = string.Format("Customer with account number: {0} has a card already", customer.AccountNumber);
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        errMsg = string.Format("No customer found with account number: {0}", customer.AccountNumber);
+                        return false;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static List<Customer> RetrieveCustomerPersoData()
+        {
+            try
+            {
+                using (var context = new PersoDBEntities())
+                {
+                    var customers = context.Customers
+                                            .Where(c => c.CustomerCard != null)                    
+                                            .Include("Card")
+                                            .Include("Card.CardProfile")
+                                            
+                                            .ToList();
+
+                    return customers;
+                }
             }
             catch (Exception ex)
             {

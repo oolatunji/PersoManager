@@ -19,15 +19,17 @@ namespace PersoManager.Web.Controllers.api
             try
             {
                 string errMsg = string.Empty;
+                Random rand = new Random();
+                string accountnumber = rand.Next(20000, 39999).ToString();
+                rand = new Random();
+                accountnumber += rand.Next(10000, 99999).ToString();
+
                 var customer = new Customer();
                 customer.Surname = customermodel.Surname;
                 customer.Othernames = customermodel.Othernames;
-                customer.AccountNumber = customermodel.AccountNumber;
+                customer.AccountNumber = accountnumber;
                 customer.Date = System.DateTime.Now;
-                customer.CustomerBranch = customermodel.CustomerBranch;
-                customer.Downloaded = false;
-                customer.Card = new CardProductionPL().ProduceCard(customermodel.CardProfileID, Convert.ToInt64(customer.CustomerBranch));
-
+                
                 bool result = CustomerPL.Save(customer, out errMsg);
                 if (string.IsNullOrEmpty(errMsg))
                     return result.Equals(true) ? Request.CreateResponse(HttpStatusCode.OK, "Customer registered successfully.") : Request.CreateResponse(HttpStatusCode.BadRequest, "Request failed");
@@ -75,6 +77,35 @@ namespace PersoManager.Web.Controllers.api
                 ErrorHandler.WriteError(ex);
                 var response = Request.CreateResponse(HttpStatusCode.BadRequest);
                 response.ReasonPhrase = ex.Message;
+                return response;
+            }
+        }
+
+        [HttpPost]
+        public HttpResponseMessage IssueCustomerCard([FromBody]CustomerModel customermodel)
+        {
+            try
+            {
+                string errMsg = string.Empty;
+                var customer = new Customer();
+                customer.AccountNumber = customermodel.AccountNumber;
+                customer.CustomerBranch = customermodel.CustomerBranch;
+                customer.Downloaded = false;
+                customer.Card = new CardProductionPL().ProduceCard(customermodel.CardProfileID, Convert.ToInt64(customer.CustomerBranch)); 
+
+                bool result = CustomerPL.IssueCustomerCard(customer, out errMsg);
+                if (string.IsNullOrEmpty(errMsg))
+                    return result.Equals(true) ? Request.CreateResponse(HttpStatusCode.OK, "Card Request was successful.") : Request.CreateResponse(HttpStatusCode.BadRequest, "Request failed");
+                else
+                {
+                    var response = Request.CreateResponse(HttpStatusCode.BadRequest, errMsg);
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.WriteError(ex);
+                var response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
                 return response;
             }
         }

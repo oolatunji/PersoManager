@@ -8,8 +8,6 @@ namespace PersoManagerLibrary
 {
     public class ClientCustomerModel
     {
-        public string Surname { get; set; }
-        public string Othernames { get; set; }
         public string AccountNumber { get; set; }
         public long CardProfileID { get; set; }
         public Nullable<long> CustomerBranch { get; set; }

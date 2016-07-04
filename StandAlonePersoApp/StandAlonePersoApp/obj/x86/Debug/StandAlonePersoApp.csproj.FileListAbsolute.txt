@@ -8,3 +8,4 @@ C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAloneP
 C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\bin\Debug\StandAlonePersoApp.pdb
 C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\obj\x86\Debug\StandAlonePersoApp.exe
 C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\obj\x86\Debug\StandAlonePersoApp.pdb
+C:\Users\OLATUNJI\Documents\projects\PersoManager\StandAlonePersoApp\StandAlonePersoApp\obj\x86\Debug\StandAlonePersoApp.csprojResolveAssemblyReference.cache

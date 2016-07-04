@@ -53,7 +53,7 @@ namespace PersoManagerLibrary
             {
                 List<Object> returnedFunctions = new List<object>();
 
-                List<Function> functions = FunctionDL.RetrieveFunctions();
+                List<Function> functions = FunctionDL.RetrieveFunctions().OrderBy(f => f.Name).ToList();
 
                 foreach(Function function in functions)
                 {

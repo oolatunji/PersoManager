@@ -311,6 +311,7 @@
     <Content Include="Scripts\clndr.js" />
     <Content Include="Scripts\clndr.min.js" />
     <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\Customer\IssueCustomerCard.js" />
     <Content Include="Scripts\Customer\RegisterCustomer.js" />
     <Content Include="Scripts\Customer\UpdateCustomer.js" />
     <Content Include="Scripts\d3.js" />
@@ -422,6 +423,7 @@
     <None Include="Properties\PublishProfiles\PersoApplicationDeploy.pubxml" />
     <Content Include="Views\System\Configuration.cshtml" />
     <Content Include="Views\System\SystemConfiguration.cshtml" />
+    <Content Include="Views\Customer\IssueCustomerCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PersoManagerLibrary\PersoManagerLibrary.csproj">

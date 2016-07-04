@@ -21,7 +21,7 @@
             getCustomers();
         }
     } catch (err) {
-        displayMessage("error", "Error encountered: " + err, "Customer Management");
+        displayMessage("error", "Error encountered: " + err, "EMV Instant Card Issuance");
     }
 });
 
@@ -57,20 +57,20 @@ function download() {
                 async: true,
                 cache: false,
                 success: function (response) {
-                    displayMessage("success", response, "Card Profile Management");
+                    displayMessage("success", response, "EMV Instant Card Issuance");
                     refreshResult();
                     $("#addBtn").removeAttr("disabled");
                     $('#addBtn').html('Download Perso File');
                 },
                 error: function (xhr) {
-                    displayMessage("error", 'Error experienced: ' + xhr.responseText, "Card Profile Management");
+                    displayMessage("error", 'Error experienced: ' + xhr.responseText, "EMV Instant Card Issuance");
                     $("#addBtn").removeAttr("disabled");
                     $('#addBtn').html('Download Perso File');
                 }
             });
 
         } catch (e) {
-            displayMessage("warning", "Error encountered: " + e, "Perso File");
+            displayMessage("warning", "Error encountered: " + e, "EMV Instant Card Issuance");
             $("#addBtn").removeAttr("disabled");
             $('#addBtn').html('Download Perso File');
         }
@@ -109,6 +109,7 @@ function getCustomers() {
             {"data": "ID"},
             { "data": "Surname" },
             { "data": "Othernames" },
+            { "data": "AccountNumber" },
             { "data": "CardPan" },
             { "data": "CardExpiryDate" },
         ],
@@ -153,7 +154,7 @@ function refreshResult() {
         var table = $('#example').DataTable();
         table.ajax.reload();
     } catch (err) {
-        displayMessage("error", "Error encountered: " + err, "Perso File");
+        displayMessage("error", "Error encountered: " + err, "EMV Instant Card Issuance");
     }
 }
 

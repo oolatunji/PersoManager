@@ -42,22 +42,32 @@ namespace PersoManager.Web
             string errMsg = string.Empty;
 
             var customer = new Customer();
-            customer.Surname = customermodel.Surname;
-            customer.Othernames = customermodel.Othernames;
             customer.AccountNumber = customermodel.AccountNumber;
             customer.Date = System.DateTime.Now;
             customer.CustomerBranch = customermodel.CustomerBranch;
             customer.Downloaded = customermodel.Downloaded;
             customer.Card = new CardProductionPL().ProduceCard(customermodel.CardProfileID, Convert.ToInt64(customer.CustomerBranch));
 
-            bool result = CustomerPL.Save(customer, out errMsg);
+            bool result = CustomerPL.IssueCustomerCard(customer, out errMsg);
             if(result)
             {
-                var customers = new List<Customer>();
-                customers.Add(customer);
+                if (string.IsNullOrEmpty(errMsg))
+                {
+                    var theCustomer = CustomerDL.RetrieveCustomer(customer.AccountNumber);
 
-                persoData = CustomerPL.FormatCustomerPersoDataForDownload(customers);
-                return persoData;
+                    customer.Surname = theCustomer.Surname;
+                    customer.Othernames = theCustomer.Othernames;
+
+                    var customers = new List<Customer>();
+                    customers.Add(customer);
+
+                    persoData = CustomerPL.FormatCustomerPersoDataForDownload(customers);
+                    return persoData;
+                }
+                else
+                {
+                    throw new Exception(errMsg);
+                }
             }
             else 
             {

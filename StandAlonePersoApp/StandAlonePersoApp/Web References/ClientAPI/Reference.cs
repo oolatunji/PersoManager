@@ -306,10 +306,6 @@ namespace StandAlonePersoApp.ClientAPI {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class ClientCustomerModel {
         
-        private string surnameField;
-        
-        private string othernamesField;
-        
         private string accountNumberField;
         
         private long cardProfileIDField;
@@ -317,26 +313,6 @@ namespace StandAlonePersoApp.ClientAPI {
         private System.Nullable<long> customerBranchField;
         
         private bool downloadedField;
-        
-        /// <remarks/>
-        public string Surname {
-            get {
-                return this.surnameField;
-            }
-            set {
-                this.surnameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Othernames {
-            get {
-                return this.othernamesField;
-            }
-            set {
-                this.othernamesField = value;
-            }
-        }
         
         /// <remarks/>
         public string AccountNumber {
